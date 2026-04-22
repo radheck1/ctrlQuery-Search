@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — CtrlQuery</title>
+  <link rel="icon" href="assets/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Roboto', system-ui, -apple-system, sans-serif; }
+    .brand { color: #222965; }
+    .prose h2 { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.5rem; font-weight: 600; }
+    .prose h3 { margin-top: 1.25rem; margin-bottom: 0.5rem; font-size: 1.125rem; font-weight: 600; }
+    .prose p, .prose li { margin-bottom: 0.75rem; line-height: 1.7; color: #334155; }
+    .prose ul { padding-left: 1.25rem; list-style-type: disc; }
+    .prose a { color: #222965; text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-[#f4f3ef] text-slate-800">
+
+  <header class="max-w-3xl mx-auto px-6 py-6 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2">
+      <img src="assets/logo.png" alt="CtrlQuery logo" class="w-8 h-8" />
+      <span class="text-xl font-semibold"><span class="brand">ctrl</span>Query</span>
+    </a>
+    <nav class="text-sm">
+      <a href="index.html" class="hover:text-slate-900">← Home</a>
+    </nav>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-8 prose">
+    <h1 class="text-4xl font-bold mb-2">Privacy Policy</h1>
+    <p class="text-slate-500 text-sm">Last updated: April 22, 2026</p>
+
+    <p>This policy describes how the CtrlQuery Chrome extension ("CtrlQuery", "we") handles data. In short: <strong>we don't collect, transmit, or store your browsing data on any server we control.</strong> The extension is designed to operate locally by default.</p>
+
+    <h2>What the extension accesses</h2>
+    <p>CtrlQuery is granted the following Chrome permissions:</p>
+    <ul>
+      <li><strong>activeTab</strong> — Read the content of the tab you're currently on, but only when you actively invoke a search. The extension cannot see tabs you haven't searched.</li>
+      <li><strong>scripting</strong> — Inject the search logic into the active tab.</li>
+      <li><strong>storage</strong> — Save your preferences (theme, search options) and cached search indexes in your browser's local storage.</li>
+      <li><strong>offscreen</strong> — Run the local embedding model in a background document.</li>
+      <li><strong>Host permission for api.openai.com</strong> — Only used if you provide your own OpenAI API key (see "Optional OpenAI route" below).</li>
+    </ul>
+
+    <h2>How searches work (local, by default)</h2>
+    <p>When you run a search on a page:</p>
+    <ul>
+      <li>The page's visible text is extracted in your browser.</li>
+      <li>For smart search, the text is embedded using an on-device model (<code>all-MiniLM-L6-v2</code> via transformers.js). The embedding runs entirely in your browser — no network requests are made.</li>
+      <li>The embeddings and search index are stored in your browser's IndexedDB, scoped to the page URL.</li>
+      <li>Search results are computed locally and displayed in the extension popup.</li>
+    </ul>
+    <p>Keyword search uses standard in-page text matching and does not perform any embedding or network activity.</p>
+
+    <h2>Optional OpenAI route</h2>
+    <p>CtrlQuery optionally supports OpenAI's <code>text-embedding-3-small</code> model as an alternative to the local embedder. This route is <strong>off by default</strong> and only activates if you explicitly provide your own OpenAI API key in the extension's settings.</p>
+    <p>If you enable this route:</p>
+    <ul>
+      <li>Your API key is stored locally in your browser's storage. It is never transmitted to us.</li>
+      <li>Page text chunks are sent directly from your browser to OpenAI's API for embedding. No intermediate server is involved.</li>
+      <li>OpenAI's handling of that data is governed by <a href="https://openai.com/policies/api-data-usage-policies">OpenAI's API data usage policies</a>.</li>
+    </ul>
+
+    <h2>What we do NOT do</h2>
+    <ul>
+      <li>We do not collect analytics or telemetry.</li>
+      <li>We do not track which pages you visit or search.</li>
+      <li>We do not sell, share, or transmit your data to any third party (other than OpenAI if you've opted in above).</li>
+      <li>We do not place cookies.</li>
+      <li>We do not maintain any user accounts or servers that store your data.</li>
+    </ul>
+
+    <h2>Data retention and deletion</h2>
+    <p>All data stored by CtrlQuery lives in your browser's local storage (IndexedDB and <code>chrome.storage</code>). You can clear it at any time by:</p>
+    <ul>
+      <li>Uninstalling the extension — Chrome automatically removes all extension storage.</li>
+      <li>Using Chrome's "Clear browsing data" for site data.</li>
+      <li>Clearing IndexedDB for pages where you've searched.</li>
+    </ul>
+
+    <h2>Children's privacy</h2>
+    <p>CtrlQuery is not directed at children under 13 and does not knowingly collect information from anyone, regardless of age.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If we make material changes, we will update the "Last updated" date at the top of this page. Significant changes will be noted in the extension's release notes.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy or about CtrlQuery's privacy practices? Email <a href="mailto:garrett2558@gmail.com">garrett2558@gmail.com</a>.</p>
+  </main>
+
+  <footer class="py-10 border-t border-slate-200 mt-10">
+    <div class="max-w-3xl mx-auto px-6 flex items-center justify-between text-sm text-slate-500">
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="" class="w-5 h-5" />
+        <span>CtrlQuery</span>
+      </div>
+      <a href="index.html" class="hover:text-slate-900">← Home</a>
+    </div>
+  </footer>
+
+</body>
+</html>

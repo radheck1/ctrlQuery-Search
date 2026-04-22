@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CtrlQuery — AI-powered semantic search for any webpage</title>
+  <meta name="description" content="A Chrome extension that brings AI-powered semantic search to any webpage. Find what you mean, not just what you type." />
+  <link rel="icon" href="assets/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Roboto', system-ui, -apple-system, sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #f4f3ef 0%, #ffffff 100%); }
+    .brand { color: #222965; }
+    .brand-bg { background-color: #222965; }
+    .brand-bg:hover { background-color: #111432; }
+  </style>
+</head>
+<body class="bg-[#f4f3ef] text-slate-800">
+
+  <!-- Nav -->
+  <header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2">
+      <img src="assets/logo.png" alt="CtrlQuery logo" class="w-8 h-8" />
+      <span class="text-xl font-semibold"><span class="brand">ctrl</span>Query</span>
+    </a>
+    <nav class="flex items-center gap-6 text-sm">
+      <a href="#features" class="hover:text-slate-900">Features</a>
+      <a href="#privacy" class="hover:text-slate-900">Privacy</a>
+      <a href="privacy.html" class="hover:text-slate-900">Privacy Policy</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="gradient-bg">
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 text-center">
+      <img src="assets/logo.png" alt="" class="w-20 h-20 mx-auto mb-6" />
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-5">
+        Search the web the way you <span class="brand">think</span>.
+      </h1>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10">
+        CtrlQuery is a Chrome extension that brings AI-powered semantic search to any webpage. Ask in plain language — find the passages that actually mean what you asked.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <!-- TODO: replace with real Chrome Web Store link once listed -->
+        <a href="#" class="brand-bg text-white px-6 py-3 rounded-lg font-medium inline-flex items-center gap-2 transition-colors">
+          Add to Chrome
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#features" class="border border-slate-300 px-6 py-3 rounded-lg font-medium hover:bg-white transition-colors">
+          See how it works
+        </a>
+      </div>
+      <p class="text-xs text-slate-500 mt-6">Free • Runs locally by default • No account required</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-3">Built for how people actually read the web.</h2>
+      <p class="text-center text-slate-600 max-w-2xl mx-auto mb-14">Two modes. One shortcut.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+          <div class="brand text-sm font-semibold mb-2">SMART SEARCH</div>
+          <h3 class="text-2xl font-semibold mb-3">Find meaning, not just matches.</h3>
+          <p class="text-slate-600">Ask a question or describe what you're looking for. CtrlQuery embeds the page locally and returns the passages that actually answer you — even if they don't contain your exact words.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+          <div class="brand text-sm font-semibold mb-2">KEYWORD SEARCH</div>
+          <h3 class="text-2xl font-semibold mb-3">Ctrl+F, but better.</h3>
+          <p class="text-slate-600">Case-sensitive, whole-word, OR clauses, and Deep Search that probes hidden content behind accordions and dropdowns. All with color-coded per-term highlights.</p>
+        </div>
+      </div>
+
+      <!-- Feature bullets -->
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+          <h4 class="font-semibold mb-1">Works on PDFs</h4>
+          <p class="text-sm text-slate-600">Built-in PDF viewer with the same smart + keyword search.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+          <h4 class="font-semibold mb-1">Local by default</h4>
+          <p class="text-sm text-slate-600">On-device embeddings via transformers.js. Nothing leaves your machine unless you opt in to the OpenAI route.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+          <h4 class="font-semibold mb-1">Color themes</h4>
+          <p class="text-sm text-slate-600">Seven themes. Adaptive toolbar icon that matches your browser's light/dark mode.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy callout -->
+  <section id="privacy" class="py-20 bg-white border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Your data stays on your machine.</h2>
+      <p class="text-slate-600 text-lg mb-8">
+        CtrlQuery only reads the page you search on, and only when you ask. Search indexes live in your browser's local storage. We don't collect, transmit, or sell your browsing data.
+      </p>
+      <a href="privacy.html" class="text-sm font-medium brand underline">Read the full privacy policy →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="" class="w-5 h-5" />
+        <span>CtrlQuery</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="privacy.html" class="hover:text-slate-900">Privacy</a>
+        <a href="mailto:garrett2558@gmail.com" class="hover:text-slate-900">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
