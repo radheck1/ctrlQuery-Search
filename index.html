@@ -92,16 +92,40 @@
         </div>
       </div>
 
-      <!-- Demo video -->
-      <div class="mt-16 max-w-lg mx-auto">
+      <!-- Demo carousel -->
+      <div id="demo-carousel" class="mt-16 max-w-lg mx-auto">
         <h3 class="text-2xl md:text-3xl font-bold text-center mb-6">ctrlQuery in action:</h3>
-        <video
-          class="w-full aspect-square rounded-xl shadow-lg border border-slate-200"
-          autoplay loop muted playsinline controls preload="metadata"
-        >
-          <source src="assets/demo.mp4" type="video/mp4" />
-          Your browser doesn't support embedded video.
-        </video>
+
+        <div class="demo-slide" data-idx="0">
+          <video
+            class="w-full aspect-square rounded-xl shadow-lg border border-slate-200"
+            autoplay loop muted playsinline controls preload="metadata"
+          >
+            <source src="assets/mars.mp4" type="video/mp4" />
+            Your browser doesn't support embedded video.
+          </video>
+          <p class="text-center text-sm text-slate-600 mt-3">Wikipedia &mdash; <em>"is there water?"</em></p>
+        </div>
+
+        <div class="demo-slide hidden" data-idx="1">
+          <video
+            class="w-full aspect-square rounded-xl shadow-lg border border-slate-200"
+            loop muted playsinline controls preload="metadata"
+          >
+            <source src="assets/mdn.mp4" type="video/mp4" />
+            Your browser doesn't support embedded video.
+          </video>
+          <p class="text-center text-sm text-slate-600 mt-3">MDN Web Docs &mdash; <em>"how do I add an element to the end of an array?"</em></p>
+        </div>
+
+        <div class="flex items-center justify-center gap-4 mt-5">
+          <button id="demo-prev" type="button" class="px-3 py-1 text-2xl leading-none text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors" aria-label="Previous demo">&lsaquo;</button>
+          <div class="flex gap-2 items-center" id="demo-dots">
+            <button type="button" class="demo-dot w-2 h-2 rounded-full bg-slate-800 transition-colors" data-idx="0" aria-label="Show demo 1"></button>
+            <button type="button" class="demo-dot w-2 h-2 rounded-full bg-slate-300 transition-colors" data-idx="1" aria-label="Show demo 2"></button>
+          </div>
+          <button id="demo-next" type="button" class="px-3 py-1 text-2xl leading-none text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors" aria-label="Next demo">&rsaquo;</button>
+        </div>
       </div>
     </div>
   </section>
@@ -138,6 +162,40 @@
         }
       });
     });
+
+    (function () {
+      const carousel = document.getElementById('demo-carousel');
+      if (!carousel) return;
+      const slides = carousel.querySelectorAll('.demo-slide');
+      const dots = carousel.querySelectorAll('.demo-dot');
+      const prev = document.getElementById('demo-prev');
+      const next = document.getElementById('demo-next');
+      let active = 0;
+
+      function show(idx) {
+        idx = ((idx % slides.length) + slides.length) % slides.length;
+        slides.forEach((slide, i) => {
+          const video = slide.querySelector('video');
+          if (i === idx) {
+            slide.classList.remove('hidden');
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          } else {
+            slide.classList.add('hidden');
+            video.pause();
+          }
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('bg-slate-800', i === idx);
+          dot.classList.toggle('bg-slate-300', i !== idx);
+        });
+        active = idx;
+      }
+
+      prev.addEventListener('click', () => show(active - 1));
+      next.addEventListener('click', () => show(active + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+    })();
   </script>
 
 </body>
